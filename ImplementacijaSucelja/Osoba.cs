@@ -2,7 +2,7 @@ using System;
 
 namespace Vsite.CSharp
 {
-    public class Osoba
+    public class Osoba : IComparable<Osoba> 
     {
         public Osoba(string ime, string prezime, DateTime datumRoðenja, string mjestoRoðenja)
         {
@@ -15,6 +15,14 @@ namespace Vsite.CSharp
         public override string ToString()
         {
             return string.Format("{0} {1}, {2}, {3}", Ime, Prezime, DatumRoðenja.ToShortDateString(), MjestoRoðenja);
+        }
+
+        public int CompareTo(Osoba other)
+        {
+            int rez = Prezime.CompareTo(other.Prezime);
+            if (rez != 0)
+                return rez;
+            return Ime.CompareTo(other.Ime);
         }
 
         public readonly string Ime;
