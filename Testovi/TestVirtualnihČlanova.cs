@@ -32,7 +32,7 @@ namespace Vsite.CSharp.Testovi
         public void VirtualniČlanovi_IzvedenaNevirtualnaMetodaVraćaTekst()
         {
             VirtualniČlanovi.ISučelje s = (VirtualniČlanovi.ISučelje)(new VirtualniČlanovi.Izvedena());
-            Assert.AreEqual("Bazna.NevirtualnaMetoda", s.NevirtualnaMetoda());
+            Assert.AreEqual("Izvedena.NevirtualnaMetoda", s.NevirtualnaMetoda());
         }
     }
 }
