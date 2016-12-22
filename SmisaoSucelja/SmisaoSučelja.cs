@@ -5,6 +5,14 @@ namespace Vsite.CSharp
 {
     public class SmisaoSučelja
     {
+        class UsporedbaPoImenu : IComparer<Osoba>
+        {
+            public int Compare(Osoba x, Osoba y)
+            {
+                return x.Ime.CompareTo(y.Ime);
+            }
+        }
+
         static void Ispiši(List<Osoba> list)
         {
             foreach (Osoba o in list)
@@ -18,17 +26,21 @@ namespace Vsite.CSharp
 
         public static void SortiranoPoImenu(List<Osoba> osobe)
         {
-            // TODO: Koristeæi preoptereæenu inačicu metode List<T>.Sort(IComparer(T)) abecedno sortirati osobe prema njihovim imenima.
+            // Koristeæi preoptereæenu inačicu metode List<T>.Sort(IComparer(T)) abecedno sortirati osobe prema njihovim imenima.
+            UsporedbaPoImenu upi = new UsporedbaPoImenu();
+            osobe.Sort(upi);
         }
 
         public static void SortiranoPoDatumuRođenja(List<Osoba> osobe)
         {
-            // TODO: Koristeæi preoptereæenu inačicu metode List<T>.Sort(Comparison(T)) sortirati osobe prema njihovim datumima rođenja.
+            // Koristeæi preoptereæenu inačicu metode List<T>.Sort(Comparison(T)) sortirati osobe prema njihovim datumima rođenja.
+            osobe.Sort((x, y) => (x.DatumRoðenja.CompareTo(y.DatumRoðenja)));
         }
 
         public static void SortiranoPoMjestuRođenja(List<Osoba> osobe)
         {
-            // TODO: Koristeæi preoptereæenu inačicu metode List<T>.Sort(Comparison(T)) osobe sortirati prema njihovim mjestima rođenja.
+            // Koristeæi preoptereæenu inačicu metode List<T>.Sort(Comparison(T)) osobe sortirati prema njihovim mjestima rođenja.
+            osobe.Sort((x, y) => (x.MjestoRoðenja.CompareTo(y.MjestoRoðenja)));
         }
 
         static void Main(string[] args)
